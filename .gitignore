@@ -503,3 +503,4 @@ Thumbs.db
 
 # Angular specific
 .angular/cache
+*.pem
