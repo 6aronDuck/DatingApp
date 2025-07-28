@@ -10,15 +10,14 @@ import { inject,signal } from '@angular/core';
   styleUrl: './nav.css'
 })
 export class Nav {
-  private accountService = inject(AccountService);
+  protected accountService = inject(AccountService);
   protected creds: any = {};
-  protected loggedIn = signal(false);
+  
 
   login()
   {
     this.accountService.login(this.creds).subscribe({
       next: result => {
-        this.loggedIn.set(true);
         this.creds = {};
         console.log(result)
       },
@@ -28,6 +27,6 @@ export class Nav {
 
   logout()
   {
-    this.loggedIn.set(false);
+    this.accountService.logout();
   }
 }
