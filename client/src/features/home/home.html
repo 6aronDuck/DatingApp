@@ -11,14 +11,17 @@
             <h1 class="text-5xl font-bold mt-4">Find your match</h1>
             <p class="py-6 text-lg">Come on in!... all you need to do is sign up</p>
             <div class="flex items-center gap-3">
-                <button (click)="showRegister()" class="btn btn-primary btn-lg">Register</button>
+                <button (click)="showRegister(true)" class="btn btn-primary btn-lg">Register</button>
                 <button class="btn btn-info btn-lg" routerLink="/auth/signup">Learn mode</button>
             </div>
         </div>
     </div>
     } @else {
     <div class="w-full text-2xl text-center">
-        <app-register class="w-full flex justify-center"/>
+        <app-register 
+        [membersFromHome]="memebersFromApp" class="w-full flex justify-center"
+        (cancelRegister)="showRegister($event)"
+        />
     </div>
     }
 
